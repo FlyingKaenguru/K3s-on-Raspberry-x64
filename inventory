@@ -1,0 +1,11 @@
+# The inventory describes which nodes can be accessed via Ansible.
+# The inventory contains the IP addresses or names of the available hosts.
+# The entries in the inventory can be grouped if necessary to facilitate management.
+# Both individual entries and groups can be linked to variables, for example, to assign a specific NTP server to all hosts in group X.
+# In addition, it is possible to obtain the inventory dynamically from other sources as well as to use multiple inventory files in parallel.
+
+[pi]
+192.168.154.129
+192.168.154.130
+192.168.154.131
+192.168.154.132
