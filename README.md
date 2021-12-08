@@ -53,3 +53,21 @@ Add the SSH private key to the ssh-agent
 # ssh-add ~/.ssh/id_rsa
 Now try to run ansible-playbook and ssh on the hosts.
 ````
+
+Alternative you can use "--ask-pass" or "-k"
+You will be asked for the passphrase only once. Timeouts no longer occur
+You also need "sshpass" installed. However, I could not get it to run under Windows Subsystem (Ubuntu 20.04)
+The same error appeared as described in https://mikethecanuck.wordpress.com/tag/ansible/
+````shell
+ansible pi -m ping --user pi --ask-pass
+````
+
+---
+
+"-m" tells Ansible what module to use
+"-a" gives arguments for the module 
+If you do not specify a module, "-m command" is used as default 
+
+````shell
+ ansible pi -a "free -h" -u pi
+````
