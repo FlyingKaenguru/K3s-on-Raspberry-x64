@@ -34,6 +34,7 @@ Ping "all" server in the inventory list and use the user "pi"
 ```
 ansible -i inventory pi -m ping -u pi
 ```
+_"-i inventory" can be omitted in the command if this was defined in the inventory file_
 
 ###### _Hint_
 
