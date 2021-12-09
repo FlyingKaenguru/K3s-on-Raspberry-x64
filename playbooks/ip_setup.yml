@@ -1,5 +1,6 @@
 ---
-- hosts: pi
+- hosts: multi
+  # become = run as sudo
   become: yes
 
   pre_tasks:
