@@ -59,6 +59,12 @@ worker
 
 As in the example above, you can name your server to get better debugging response in our Ansible logs
 
+There is another module, you can use to see all the information ansible can see about the server.
+
+````shell
+ansible -i inventory multi -m setup
+````
+
 If you want to use an ssh key instead of an insecure password to connect to the server,
 you can store the user and the path to the private key file as a variable.
 
@@ -96,6 +102,10 @@ ansible pi -m ping --user pi --ask-pass
 
 
 <h2>Playbooks</h2>
+* Contains multiple Ad-hoc commands
+* simple yaml files
+* run with "ansible-playbook"
+* documented setup -> infrastructure as code
 
 ````shell
  ansible-playbook playbooks/ip_setup.yml --syntax-check
@@ -103,4 +113,26 @@ ansible pi -m ping --user pi --ask-pass
 
 ````shell
 ansible-playbook -u pi playbooks/ip_setup.yml -v
+````
+
+<h2>Role</h2>
+* Encapsulate configurations in reusable chunks
+* Ansible Galaxy provides over 4000 roles#
+* To create a new role you can use:
+
+````shell
+ ansible-galaxy init [role-name]
+````
+It creates a [rome-name]-directory. In this folder, you will find some default configurations. 
+* In the default directory you want to put most of your variables. Variable that you might override in your playbooks.
+* The VARs directory is good for variables that your role needs. But there might not want to be overridden by other playbooks.
+
+To make sure the role gets executed correctly, check the meta file and make sure you have all the needed dependencies, that are used in your role, added.
+Also call your role in your playbook.
+* All you have to do is add a new section to the playbook: roles 
+* Give it a list of roles
+
+````shell
+    roles:
+      - [role-name]
 ````
