@@ -1,2 +1,19 @@
----
-# vars file for setup
+# Mapping of what hardware MAC addresses should be configured with specific IPs.
+mac_address_mapping:
+
+  "e4:5f:01:71:8d:9e":
+    name: TinkyWinky.pi
+    ip: "192.168.154.80"
+  "e4:5f:01:71:8a:da":
+    name: Dipsy.pi
+    ip: "192.168.154.81"
+  "e4:5f:01:71:a4:4f":
+    name: LaaLaa.pi
+    ip: "192.168.154.82"
+  "e4:5f:01:71:a3:fa":
+    name: po.pi
+    ip: "192.168.154.83"
+
+# Nameservers to use in resolv.conf.
+dns_nameservers:
+  - "192.168.154.53"
