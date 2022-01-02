@@ -23,3 +23,7 @@
   notify:
     - update hostname
     - delete dhcp leases
+    - reboot
+    - pause on reboot
+    - wait for host to return
+    - debug

@@ -10,3 +10,30 @@
   with_items:
     - /var/lib/dhcp/dhclient.leases
     - /var/lib/dhcpcd5/dhcpcd-eth0.lease
+
+- name: reboot
+  shell: "sleep 5 && reboot"
+  
+  
+- name: pause on reboot
+  pause:
+    prompt: "Need delay for restart"
+    seconds: 10
+
+- name: wait for host to return
+  # Now we will run a local 'ansible -m ping' on this host until it returns.
+  # This works with the existing ansible hosts inventory and so any custom ansible_ssh_hosts definitions are being used
+  local_action: shell ansible -u pi -m ping {{ inventory_hostname }}
+  register: result
+  until: result.rc == 0
+  retries: 30
+  delay: 10
+  vars:
+    ansible_become: false
+
+- name: debug
+  shell: uptime
+  register: uptime
+
+- debug:
+    var: uptime.start

@@ -1,5 +1,5 @@
 ---
-- hosts: multi
+- hosts: pi
   # become = run as sudo
   become: yes
 

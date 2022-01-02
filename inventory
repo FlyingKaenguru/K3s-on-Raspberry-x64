@@ -1,16 +1,24 @@
-[master]
+[pi]
 Tinky-Winky ansible_host=192.168.154.130
-
-[worker]
 Dipsy ansible_host=192.168.154.129
 Laa-Laa ansible_host=192.168.154.131
 Po ansible_host=192.168.154.132
+
+[master]
+Tinky-Winky ansible_host=192.168.154.80
+
+[worker]
+Dipsy ansible_host=192.168.154.81
+Laa-Laa ansible_host=192.168.154.82
+Po ansible_host=192.168.154.83
 
 # Group that has groups
 [multi:children]
 master
 worker
 
+[pi]
+ansible_ssh_user=pi
+
 [multi:vars]
 ansible_ssh_user=pi
-ansible_ssh_private_key_file=~/.ssh/id_ansible
