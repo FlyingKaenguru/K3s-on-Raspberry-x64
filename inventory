@@ -7,7 +7,7 @@ Po ansible_host=192.168.154.132
 [master]
 Tinky-Winky ansible_host=192.168.154.80
 
-[worker]
+[node]
 Dipsy ansible_host=192.168.154.81
 Laa-Laa ansible_host=192.168.154.82
 Po ansible_host=192.168.154.83
