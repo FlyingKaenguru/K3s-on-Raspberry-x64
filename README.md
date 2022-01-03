@@ -22,8 +22,14 @@ If you want to learn more about Ansible read:
 Or visit the official documentation
 * https://docs.ansible.com/ansible/latest/user_guide/index.html#getting-started
 
-<h2>Inventory</h2>
+<h2>Setup</h2>
 When a Pi boots up for the first time, it receives a DHCP-assigned IP address, which is then changed to a static IP using Ansible Playbook.
 
----
+First, we have the [inventory](inventory)
+file defining the current IP addresses of the Pis:
+
+Note that we’ve also got the definition of the default user pi in there.
+
+Then there is the [vars.yml](role/vars/main.yml) file, which contains the mapping of hardware MAC addresses to specific IPs.
+This is the "should" state of the Pi, which is to configure specific hostnames and IP addresses and use domain names identified by their MAC addresses. More precisely, we switch from dynamic IPs to static IPs.
 

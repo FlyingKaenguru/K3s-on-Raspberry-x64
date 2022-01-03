@@ -108,11 +108,11 @@ ansible pi -m ping --user pi --ask-pass
 * documented setup -> infrastructure as code
 
 ````shell
- ansible-playbook playbooks/ip_setup.yml --syntax-check
+ ansible-playbook playbooks/update.yml --syntax-check
 ````
 
 ````shell
-ansible-playbook -u pi playbooks/ip_setup.yml -v
+ansible-playbook -u pi playbooks/update.yml -v
 ````
 
 <h2>Role</h2>
@@ -136,3 +136,10 @@ Also call your role in your playbook.
     roles:
       - [role-name]
 ````
+
+<h2>Handler</h2>
+Handlers are just like normal tasks in an Ansible playbook.
+But sometimes you want a task to run only when a change is made on a machine. 
+For example, you may want to restart a service if a task updates the configuration of that service, but not if the configuration is unchanged. 
+Ansible uses handlers to address this use case. 
+Handlers are tasks that only run when notified.
