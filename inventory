@@ -15,7 +15,7 @@ Po ansible_host=192.168.154.83
 # Group that has groups
 [multi:children]
 master
-worker
+node
 
 [pi]
 ansible_ssh_user=pi
