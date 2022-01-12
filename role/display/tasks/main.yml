@@ -12,6 +12,12 @@
     regexp: '#hdmi_mode=1'
     replace: "hdmi_mode=9"
 
+- name: set hdmi mode
+  replace:
+    path: /boot/config.txt
+    regexp: '#hdmi_force_hotplug=1'
+    replace: "hdmi_force_hotplug=1"
+
 - name: Test for line
   shell: grep -c "hdmi_enable_4kp60=1" /boot/config.txt || true
   register: test_grep
