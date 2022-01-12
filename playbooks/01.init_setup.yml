@@ -1,6 +1,6 @@
 ---
 
-- hosts: tinki
+- hosts: pi
   gather_facts: yes
   become: yes
 

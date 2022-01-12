@@ -1,18 +1,15 @@
-[tinki]
-Tinky-Winky ansible_host=192.168.154.80
-
 [pi]
-Tinky-Winky ansible_host=192.168.154.130
+TinkyWinky ansible_host=192.168.154.130
 Dipsy ansible_host=192.168.154.129
-Laa-Laa ansible_host=192.168.154.131
+LaaLaa ansible_host=192.168.154.131
 Po ansible_host=192.168.154.132
 
 [master]
-Tinky-Winky ansible_host=192.168.154.80
+TinkyWinky ansible_host=192.168.154.80
 
 [node]
 Dipsy ansible_host=192.168.154.81
-Laa-Laa ansible_host=192.168.154.82
+LaaLaa ansible_host=192.168.154.82
 Po ansible_host=192.168.154.83
 
 # Group that has groups
