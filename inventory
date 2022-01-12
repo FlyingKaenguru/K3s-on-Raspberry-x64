@@ -1,9 +1,5 @@
 [tinki]
-Tinky-Winky ansible_host=192.168.154.130
-
-[tinki]
-ansible_ssh_user=pi
-
+Test-Tinky-Winky ansible_host=192.168.154.130
 
 [pi]
 Tinky-Winky ansible_host=192.168.154.130
