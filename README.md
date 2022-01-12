@@ -16,6 +16,7 @@ Also upload your private SSH key to the Pi. In the further course we will connec
 
 These playbooks also assume that you have Ansible installed and ready on your control machine.
 
+For k3s you should also install kubectl. This will allow you to access their later cluster.
 ---
 
 <h2>Additional customizations:</h2>
@@ -73,19 +74,50 @@ Since you will probably run this tutorial at a later time, please check the k3s 
 
 ---
 
-**<h3>**Playbooks**</h3>**
+**<h2>Playbook explanation</h2>**
 In the folder "Playbooks" you will find the files [01.init_setup.yml](playbooks/01.init_setup.yml) and [02.k3s_setup.yml](playbooks/02.k3s_setup.yml). They contain lists of tasks that are automatically executed against hosts. 
 
-* **01.init_setup.yml**
+**<h3>01.init_setup.yml</h3>**
 
 First let's look at the file [01.init_setup.yml](playbooks/01.init_setup.yml). The variable "hosts" has the value "pi". This tells us that the subsequent tasts and roles will be executed for the hosts in the group "pi" ([inventory](inventory)). At the beginning the hosts are tried to be pinged. If they are reachable, an update of the pis is performed.
 
 Under the variable "roles" you will find the role calls "poe-setup" and "display". As already mentioned in the section "Additional customizations" **you can comment them out or delete them if you don't need them.** 
 
-* **role ip-setup**
+**<h3>role ip-setup</h3>**
 
 Ansible roles are a specific type of playbook. They are standalone and can be added to any playbook. You can find the tasks of the ip-setup role in [tasks](role/ip-setup/tasks/main.yml). 
 
-* **handler**
+**<h3>handler</h3>**
 
 If you look more closely at the task of this file, you will see the call to handler in the "notify" section. Among other things, they reboot the Pis and check whether the switch to static IPs has worked. [handler](role/ip-setup/handlers/main.yml). If this "wait for host to return" step fails, please check if the hostnames in the [inventory](inventory) file match in all group. See my explanation in the "Matching the values to your environment/inventory" section.
+
+After this step you can reach your Pis under the new static IP. 
+
+**<h3>02.k3s_setup.yml</h3>**
+
+The playbook [02.k3s_setup.yml](playbooks/02.k3s_setup.yml) sets up a k3s cluster. In preparation, the following three roles are executed on all hosts in the "multi" group.
+    
+- [prereq](role/k3s-setup/prereq/tasks/main.yml)
+- [download](role/k3s-setup/download/tasks/main.yml)
+- [raspberrypi](role/k3s-setup/raspberrypi/tasks/main.yml)
+
+Then, the playbook divides into master and worker nodes as they require different configurations. 
+
+*This part of the Ansible script is from https://github.com/k3s-io/k3s-ansible. However, the structure and unnecessary parts (e.g. Ubuntu configurations) have been removed.*
+
+
+
+**<h2>Usage</h2>**
+
+Pi setup
+````shell
+ansible-playbook playbooks/01.init_setup.yml -v
+````
+Afterwards, k3s can be rolled out. 
+````shell
+ansible-playbook playbooks/02.k3s_setup.yml -v
+````
+Get your kubeconfig from the master node
+````shell
+scp pi@master_ip:~/.kube/config ~/.kube/config
+````
