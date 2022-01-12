@@ -101,6 +101,17 @@ ansible pi -m ping --user pi --ask-pass
 ````
 
 
+
+**Shutdown command**
+
+Since we are using Ansible, we can also use it to shut down all the servers in our inventory. The following command can be used for this purpose.
+* -a "shutdown now" --> send the comand to all the servers now
+* -b --> use become user - use the root user and use sudo
+
+````shell
+ansible all -i inventory -a "shutdown now" -b
+````
+
 <h2>Playbooks</h2>
 * Contains multiple Ad-hoc commands
 * simple yaml files
