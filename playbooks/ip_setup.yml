@@ -8,4 +8,4 @@
       ansible.builtin.ping:
 
   roles:
-    - setup
+    - ip-setup
