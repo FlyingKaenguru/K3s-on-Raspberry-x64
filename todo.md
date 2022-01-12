@@ -1,8 +1,9 @@
-- Password Anmeldung deaktivieren
-- poe Setup 
+- [-] Password Anmeldung deaktivieren
+- [x] poe Setup 
+- [x] display setup
 - Doku + Erklärung
 
-- github pipeline
+- [-] github pipeline
 
 - Kube-Prometheus
 - Minecraft
