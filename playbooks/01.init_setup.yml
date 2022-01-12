@@ -8,7 +8,8 @@
     - name: Test Ping
       ansible.builtin.ping:
 
-  roles: poe-setup
+  roles: 
+    - poe-setup
 
 #  tasks:
 #      - name: Run the equivalent of "apt-get update" as a separate step
