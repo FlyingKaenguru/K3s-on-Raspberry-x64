@@ -1,0 +1,24 @@
+---
+
+- name: set hdmi group
+  replace:
+    path: /boot/config.txt
+    regexp: '#hdmi_group=1'
+    replace: "hdmi_group=2"
+
+- name: set hdmi mode
+  replace:
+    path: /boot/config.txt
+    regexp: '#hdmi_mode=1'
+    replace: "hdmi_mode=9"
+
+- name: Test for line
+  shell: grep -c "hdmi_enable_4kp60=1" /boot/config.txt || true
+  register: test_grep
+
+
+- name: enable hdmi
+  lineinfile:
+    path: /boot/config.txt
+    line: 'hdmi_enable_4kp60=1'
+  when: test_grep.stdout == "0"

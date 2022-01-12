@@ -119,11 +119,11 @@ ansible all -i inventory -a "shutdown now" -b
 * documented setup -> infrastructure as code
 
 ````shell
- ansible-playbook playbooks/update.yml --syntax-check
+ ansible-playbook playbooks/01.init_setup.yml --syntax-check
 ````
 
 ````shell
-ansible-playbook -u pi playbooks/update.yml -v
+ansible-playbook playbooks/01.init_setup.yml -v
 ````
 
 <h2>Role</h2>
