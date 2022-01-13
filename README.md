@@ -82,7 +82,10 @@ Ansible roles are a specific type of playbook. They are standalone and can be ad
 ### handler
 If you look more closely at the tasks of [main.yml of the tasks directory](role/ip-setup/tasks/main.yml), you will see the call to all handlers in the [main.yml of the handlers directory](role/ip-setup/handlers/main.yml) within the "notify" section. Among other things, they reboot the Pis and check whether the switch to static IPs has worked.
 
-After this step you can reach your Pis under the new static IP. 
+>INFORMATION: After your handler was running properly. It is intended that your Pis are not reachable under the `old` IP addresses. Therefore, the handler reboot will show you `unreachable`. That is actually good at this point!
+Afterwards, the handler `wait for host to return` will be successful (proably after a couple of retries because it waits for the Pis to reboot again).
+
+After this step you can reach your Pis under the new static IP addresses. 
 
 ### 02.k3s_setup.yml
 
@@ -112,7 +115,17 @@ ansible-playbook playbooks/02.k3s_setup.yml -v
 
 Get your kubeconfig from the master node
 ```
-scp pi@master_ip:~/.kube/config ~/.kube/config
+scp pi@master_ip:~/.kube/config ~/.kube/pi-config
+```
+
+Add your kubeconfig to your environment variable. 
+```
+export KUBECONFIG=~/.kube/pi-config
+```
+
+Tryout if your nodes are properly set-up.
+```
+kubectl get nodes
 ```
 
 ## Definition of Terms: What is...?
