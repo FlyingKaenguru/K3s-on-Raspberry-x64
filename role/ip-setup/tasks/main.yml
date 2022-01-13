@@ -26,4 +26,3 @@
     - reboot
     - pause on reboot
     - wait for host to return
-    - debug
