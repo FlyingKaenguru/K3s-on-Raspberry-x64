@@ -121,6 +121,10 @@ scp pi@master_ip:~/.kube/config ~/.kube/config
 Red Hat Ansible Automation Platform is an IT automation technology
 https://www.ansible.com/
 
+### kubectl
+Command Line Tool to control your Kubernetes cluster.
+https://kubernetes.io/docs/reference/kubectl/overview/
+
 ### kubernetes
 Production-Grade Container Orchestration
 https://kubernetes.io/
