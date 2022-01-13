@@ -42,13 +42,13 @@ You can use tools like wireshark to find out the ip address of your pis.
 First, we have the file [inventory](inventory). 
 The group "pi" contains the automatically assigned IPs from DHCP. They are needed to connect to the pis initially.  
 
-The group "multi", which includes the groups "master" and "node", contains the static IP addresses. We need these to set up k3s later on. If you want the future static IP addresses to be the same as assigned by DHCP, you can delete the groups "pi". 
+The group "multi", which includes the groups 'master' and 'node', contains the static IP addresses. We need these to set up k3s later on. If you want the future static IP addresses to be the same as assigned by DHCP, you can delete the groups 'pi'. 
 
->**ATTENTION**: Change the existing IPs (group pi) to the IP addresses assigned to your pis. Also, add the static IP addresses (group multi).
+>**ATTENTION**: Change the existing IPs (group pi) to the IP addresses assigned to your Pis. Also, add the static IP addresses (group multi).
 
->**ATTENTION**: Give the same name to the same Pi, no matter in which group. This name does not have to be the same as the Pi's host name. It is only used to identify the Pi. This is very important, otherwise the tasks can't check if the Pis are reachable after an IP change.
+>**ATTENTION**: Be careful! Give different names to the same Pi. Otherwise, ansible will try to reach the Pi with the wrong IP address.
 
-Example: If no host can be found (in group 'pi') with the IP of 'TinkyWinky', Ansible accesses the IP in another group. However, this can only be done if the names match.  
+Example: If you want to use the group ´pi´, ansible will not use the IP address 192.168.154.130 but the last line which includes the name 'TinkyWinky' instead. Which means it uses the group ´master´ with the IP adress 192.168.154.80.  
 
 ``` ini
 [pi]
@@ -80,7 +80,7 @@ Under the variable 'roles' you will find the role calls "poe-setup" and 'display
 Ansible roles are a specific type of playbook. They are standalone and can be added to any playbook. You can find the tasks of the ip-setup role in [main.yml](role/ip-setup/tasks/main.yml). 
 
 ### handler
-If you look more closely at the tasks of [main.yml of the tasks directory](role/ip-setup/tasks/main.yml), you will see the call to all handlers in the [main.yml of the handlers directory](role/ip-setup/handlers/main.yml) within the "notify" section. Among other things, they reboot the Pis and check whether the switch to static IPs has worked. If this "wait for host to return" step fails, please check if the Pi-names in the [inventory](inventory) file match in all groups. See my explanation in the ["Matching the values to your inventory"](#inventory) section.
+If you look more closely at the tasks of [main.yml of the tasks directory](role/ip-setup/tasks/main.yml), you will see the call to all handlers in the [main.yml of the handlers directory](role/ip-setup/handlers/main.yml) within the "notify" section. Among other things, they reboot the Pis and check whether the switch to static IPs has worked.
 
 After this step you can reach your Pis under the new static IP. 
 
