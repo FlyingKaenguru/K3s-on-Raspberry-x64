@@ -14,7 +14,7 @@ Also upload your private SSH key to the Pi. In the further course we will connec
 
 These playbooks also assume that you have Ansible installed and ready on your control machine.
 
-For k3s you should also install kubectl. This will allow you to access their later cluster.
+For k3s (https://k3s.io/) you should also install kubectl. This will allow you to access their later cluster.
 
 ## Additional customizations
 
@@ -114,3 +114,17 @@ Get your kubeconfig from the master node
 ```
 scp pi@master_ip:~/.kube/config ~/.kube/config
 ```
+
+## Definition of Terms: What is...?
+
+### ansible
+Red Hat Ansible Automation Platform is an IT automation technology
+https://www.ansible.com/
+
+### kubernetes
+Production-Grade Container Orchestration
+https://kubernetes.io/
+
+### k3s
+Lightweight Kubernetes:
+https://k3s.io/
