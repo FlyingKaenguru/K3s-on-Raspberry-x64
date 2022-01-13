@@ -10,7 +10,7 @@ Here you can find the Raspberry Pi 64-bit operating system - Bullseye
 
 Use the Raspberry Pi Imager to load the Image onto the USB Card
 - https://www.raspberrypi.com/software/
-Also upload your private SSH key to the Pi. In the further course we will connect to the Pis via ssh. You can already set this up in the Raspberry Pi imager so you don't have to do this manually for each Pi. To do this, open the additional settings using Ctrl-Shift-X.
+>**ATTENTION**: Also upload your private SSH key to the Pi. In the further course we will connect to the Pis via ssh. You can already set this up in the Raspberry Pi imager so you don't have to do this manually for each Pi. To do this, open the additional settings using Ctrl-Shift-X.
 
 These playbooks also assume that you have Ansible installed and ready on your control machine.
 
@@ -119,16 +119,16 @@ scp pi@master_ip:~/.kube/config ~/.kube/config
 
 ### ansible
 Red Hat Ansible Automation Platform is an IT automation technology
-https://www.ansible.com/
+- https://www.ansible.com/
 
 ### kubectl
 Command Line Tool to control your Kubernetes cluster.
-https://kubernetes.io/docs/reference/kubectl/overview/
+- https://kubernetes.io/docs/reference/kubectl/overview/
 
 ### kubernetes
 Production-Grade Container Orchestration
-https://kubernetes.io/
+- https://kubernetes.io/
 
 ### k3s
 Lightweight Kubernetes:
-https://k3s.io/
+- https://k3s.io/
