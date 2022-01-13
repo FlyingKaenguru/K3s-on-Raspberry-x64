@@ -61,7 +61,7 @@ TinkyWinky ansible_host=192.168.154.80
 Then there is the [vars.yml](role/ip-setup/vars/main.yml) file, which contains the mapping of hardware MAC addresses to specific IPs.
 This is the "should" state of the Pi, which is to configure specific hostnames and IP addresses and use domain names identified by their MAC addresses.
 
->**ATTENTION**: Insert the MAC addresses of your Pis and define the static IP addresses.
+>**ATTENTION**: Insert the MAC addresses of your Pis and define the static IP addresses, dns nameserver and the ip gateway. Also, define the final names of your Pis.
 
 #### ks3 version
 Since you will probably run this tutorial at a later time, please check the k3s version you want to use.
@@ -77,10 +77,10 @@ Let's first take a look at the file [01.init_setup.yml](playbooks/01.init_setup.
 Under the variable 'roles' you will find the role calls "poe-setup" and 'display'. As already mentioned in the section [Additional customizations](#additional-customizations) **you can comment them out or delete them if you don't need them.** 
 
 ### role ip-setup
-Ansible roles are a specific type of playbook. They are standalone and can be added to any playbook. You can find the tasks of the ip-setup role in [tasks](role/ip-setup/tasks/main.yml). 
+Ansible roles are a specific type of playbook. They are standalone and can be added to any playbook. You can find the tasks of the ip-setup role in [main.yml](role/ip-setup/tasks/main.yml). 
 
 ### handler
-If you look more closely at the task of this file, you will see the call to handler in the "notify" section. Among other things, they reboot the Pis and check whether the switch to static IPs has worked. [handler](role/ip-setup/handlers/main.yml). If this "wait for host to return" step fails, please check if the hostnames in the [inventory](inventory) file match in all group. See my explanation in the "Matching the values to your environment/inventory" section.
+If you look more closely at the tasks of [main.yml of the tasks directory](role/ip-setup/tasks/main.yml), you will see the call to all handlers in the [main.yml of the handlers directory](role/ip-setup/handlers/main.yml) within the "notify" section. Among other things, they reboot the Pis and check whether the switch to static IPs has worked. If this "wait for host to return" step fails, please check if the Pi-names in the [inventory](inventory) file match in all groups. See my explanation in the ["Matching the values to your inventory"](#inventory) section.
 
 After this step you can reach your Pis under the new static IP. 
 

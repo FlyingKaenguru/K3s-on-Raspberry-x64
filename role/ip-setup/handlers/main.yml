@@ -23,7 +23,7 @@
 - name: wait for host to return
   # Now we will run a local 'ansible -m ping' on this host until it returns.
   # This works with the existing ansible hosts inventory and so any custom ansible_ssh_hosts definitions are being used
-  local_action: shell ansible -u pi -m ping {{ inventory_hostname }}
+  local_action: shell ansible -u pi -m ping {{ multi_ip_address }}
   register: result
   until: result.rc == 0
   retries: 30

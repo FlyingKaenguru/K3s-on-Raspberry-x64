@@ -1,8 +1,8 @@
 [pi]
-TinkyWinky ansible_host=192.168.154.130
-Dipsy ansible_host=192.168.154.129
-LaaLaa ansible_host=192.168.154.131
-Po ansible_host=192.168.154.132
+Tinky ansible_host=192.168.154.130
+Dip ansible_host=192.168.154.129
+Laa ansible_host=192.168.154.131
+PoPo ansible_host=192.168.154.132
 
 [master]
 TinkyWinky ansible_host=192.168.154.80
@@ -17,8 +17,6 @@ Po ansible_host=192.168.154.83
 master
 node
 
-[pi]
-ansible_ssh_user=pi
-
-[multi:vars]
-ansible_ssh_user=pi
+[all:vars]
+ansible_connection=ssh
+ansible_user=pi
