@@ -13,7 +13,7 @@
 
 - name: reboot
   shell: "sleep 5 && reboot"
-  
+  ignore_errors: yes
   
 - name: pause on reboot
   pause:
@@ -31,9 +31,5 @@
   vars:
     ansible_become: false
 
-- name: debug
-  shell: uptime
-  register: uptime
-
 - debug:
-    var: uptime.start
+    var: result.stdout
