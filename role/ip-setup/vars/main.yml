@@ -2,16 +2,16 @@
 mac_address_mapping:
 
   "e4:5f:01:71:8d:9e":
-    name: TinkyWinky.pi
+    name: TinkyWinky
     ip: "192.168.154.80"
   "e4:5f:01:71:8a:da":
-    name: Dipsy.pi
+    name: Dipsy
     ip: "192.168.154.81"
   "e4:5f:01:71:a4:4f":
-    name: LaaLaa.pi
+    name: LaaLaa
     ip: "192.168.154.82"
   "e4:5f:01:71:a3:fa":
-    name: Po.pi
+    name: Po
     ip: "192.168.154.83"
 
 # Nameservers to use in resolv.conf.
