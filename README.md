@@ -1,6 +1,7 @@
-# Ansible Playbooks for initial Raspberry Pi Setup
+# Ansible Playbooks for initial Raspberry Pi Setup and k3s roolout
 Simple Ansible playbooks, roles and tasks perform the initial setup, as well as a k3s setup for a new Raspberry Pi.
 
+>**ATTENTION**: The current playbook for k3s only works with Raspberry Pi (ARM64) 
 
 ## Assumptions and Dependencies
 These playbooks assume a freshly installed Raspberry Pi running the current version of either Raspbian or Raspbian Lite.
